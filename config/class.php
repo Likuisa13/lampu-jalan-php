@@ -100,7 +100,7 @@ class lampu
 	}
 	function riwayat()
 	{
-		$this->koneksi->query("");
+		return $this->koneksi->query("SELECT riwayat.*, `lampu`.lampu FROM lampu, riwayat WHERE `lampu`.id_lampu = `riwayat`.id_lampu");
 	}
 }
 

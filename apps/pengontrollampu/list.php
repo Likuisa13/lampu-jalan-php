@@ -150,14 +150,31 @@ $datalampu = $lampu->tampil();
 <?php foreach ($datalampu as $key => $value): ?>
   <div class="col-md-3">
     <div class="panel panel-default">
+      <div class="panel panel-header">
+        <div class="text-center">
+          <h4>Manual Kontrol</h4>
+          <?php if ($value['mode']=='manual'): ?>
+          <label class="switch">
+            <input type="checkbox" onclick="window.location.href='index.php?halaman=off&id=<?php echo $value['id_lampu'] ?>';" checked>
+            <span class="slider round"></span>
+          </label>
+          <?php endif ?>
+          <?php if ($value['mode']=='otomatis'): ?>
+          <label class="switch">
+            <input type="checkbox" onclick="window.location.href='index.php?halaman=off&id=<?php echo $value['id_lampu'] ?>';">
+            <span class="slider round"></span>
+          </label>
+          <?php endif ?>
+        </div>
+      </div>
       <div class="panel panel-body">
         <div class="text-center">
-          <?php if ($value['status']==0): ?>
+          <?php if ($value['status']==0 && $value['mode'] == 'manual'): ?>
             <label class="switch">
               <input type="checkbox" onclick="window.location.href='index.php?halaman=on&id=<?php echo $value['id_lampu'] ?>';">
               <span class="slider round"></span>
             </label>
-            <?php else: ?>
+            <?php elseif($value['status']==1 && $value['mode'] == 'manual'): ?>
               <label class="switch">
                 <input type="checkbox" onclick="window.location.href='index.php?halaman=off&id=<?php echo $value['id_lampu'] ?>';" checked>
                 <span class="slider round"></span>

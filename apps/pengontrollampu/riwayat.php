@@ -115,8 +115,6 @@ $datalampu = $lampu->tampil();
   <h2><i class="fa fa-lightbulb-o"></i> Riwayat Kontrol Lampu</h2>
 </div>
 <br>
-
-
 <div id="page-inner">
   <div class="row">
     <table class="table table-striped table-responsive">
@@ -124,21 +122,44 @@ $datalampu = $lampu->tampil();
         <th>No</th>
         <th>Waktu</th>
         <th>Mode</th>
-        <th>Lampu 1</th>
-        <th>Lampu 2</th>
-        <th>Lampu 3</th>
-        <th>Lampu 4</th>
+        <th>Lampu</th>
+        <th>Status</th>
       </thead>
       <tbody>
+        <?php 
+        $data = $lampu->riwayat();
+        $no = 1;
+        foreach ($data as $value) {
+           ?>
         <tr>
-          <td>1</td>
-          <td>2020-03-03 12:00:00</td>
-          <td>Otomatis</td>
-          <td>ON</td>
-          <td>OFF</td>
-          <td>OFF</td>
-          <td>ON</td>
+          <td><?php echo $no; ?></td>
+          <td><?php echo $value['waktu'] ?></td>
+          <td>
+            <?php 
+            if ($value['mode'] == 'manual') {
+              echo '<button class="btn btn-sm btn-danger disabled">'.strtoupper($value['mode']).'</button>';
+            }
+            else{
+              echo '<button class="btn btn-sm btn-primary disabled">'.strtoupper($value['mode']).'</button>';
+            }
+            ?>  
+          </td>
+          <td><?php echo $value['lampu'] ?></td>
+          <td>
+          <?php
+            if($value['status'] == 'OFF'){
+              echo '<span style="color: red;font-style: italic"><strong>'.$value['status'].'</strong></span>';
+            }
+            else{
+              echo '<span style="color: blue"><strong>'.$value['status'].'</strong></span>';
+            }
+          ?>
+          </td>
         </tr>
+        <?php 
+          $no++;
+          }
+         ?>
       </tbody>
     </table>  
   </div>
