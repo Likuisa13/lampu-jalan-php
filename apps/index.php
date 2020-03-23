@@ -269,5 +269,10 @@ $datauser = $user->detail($id_user);
       })
     })
   </script>
+  <script>
+    $(document).ready(function() {
+      $('#data-riwayat').DataTable();
+    } );
+  </script>
 </body>
 </html>

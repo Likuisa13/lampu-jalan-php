@@ -117,7 +117,7 @@ class lampu
 
 	function riwayat()
 	{
-		return $this->koneksi->query("SELECT * FROM riwayat");
+		return $this->koneksi->query("SELECT * FROM riwayat ORDER BY waktu DESC");
 	}
 
 	function view($status)
@@ -127,6 +127,13 @@ class lampu
 		}
 		else{
 			echo '<span style="color: blue"><strong>ON</strong></span>';
+		}
+	}
+
+	function ubahStatus($status)
+	{
+		for ($i=0; $i < 3; $i++) { 
+			$this->koneksi->query("UPDATE lampu SET status='".$status[$i]."' WHERE id_lampu='".($i+1)."'");
 		}
 	}
 

@@ -9,6 +9,8 @@ if (isset($_POST)) {
 
 	$query = "INSERT INTO `riwayat`(`mode`, `lampu_1`, `lampu_2`, `lampu_3`) VALUES ('$mode','$lampu_1','$lampu_2','$lampu_3')";
 	$lampu->execute($query);
+	$status = array($lampu_1,$lampu_2,$lampu_3);
+	$lampu->ubahStatus($status);
 }
 
  ?>

@@ -117,7 +117,7 @@ $datalampu = $lampu->tampil();
 <br>
 <div id="page-inner">
   <div class="row container-fluid">
-    <table class="table table-striped table-responsive">
+    <table class="table table-striped table-responsive" id="data-riwayat">
       <thead>
         <th>No</th>
         <th>Waktu</th>
