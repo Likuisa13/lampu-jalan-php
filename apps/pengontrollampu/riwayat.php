@@ -116,14 +116,15 @@ $datalampu = $lampu->tampil();
 </div>
 <br>
 <div id="page-inner">
-  <div class="row">
+  <div class="row container-fluid">
     <table class="table table-striped table-responsive">
       <thead>
         <th>No</th>
         <th>Waktu</th>
         <th>Mode</th>
-        <th>Lampu</th>
-        <th>Status</th>
+        <th>Lampu 1</th>
+        <th>Lampu 2</th>
+        <th>Lampu 3</th>
       </thead>
       <tbody>
         <?php 
@@ -137,24 +138,16 @@ $datalampu = $lampu->tampil();
           <td>
             <?php 
             if ($value['mode'] == 'manual') {
-              echo '<button class="btn btn-sm btn-danger disabled">'.strtoupper($value['mode']).'</button>';
+              echo '<span class="badge" style="background-color:green;">'.strtoupper($value['mode']).'</badge>';
             }
             else{
-              echo '<button class="btn btn-sm btn-primary disabled">'.strtoupper($value['mode']).'</button>';
+              echo '<span class="badge" style="background-color:blue;">'.strtoupper($value['mode']).'</badge>';
             }
             ?>  
           </td>
-          <td><?php echo $value['lampu'] ?></td>
-          <td>
-          <?php
-            if($value['status'] == 'OFF'){
-              echo '<span style="color: red;font-style: italic"><strong>'.$value['status'].'</strong></span>';
-            }
-            else{
-              echo '<span style="color: blue"><strong>'.$value['status'].'</strong></span>';
-            }
-          ?>
-          </td>
+          <td><?php $lampu->view($value['lampu_1']) ?></td>
+          <td><?php $lampu->view($value['lampu_2']) ?></td>
+          <td><?php $lampu->view($value['lampu_3']) ?></td>
         </tr>
         <?php 
           $no++;

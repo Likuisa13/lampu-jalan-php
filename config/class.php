@@ -98,9 +98,41 @@ class lampu
 	{
 		$this->koneksi->query("UPDATE lampu SET status=0 WHERE id_lampu='$id_lampu'");
 	}
+	function status($mode)
+	{
+		$this->koneksi->query("UPDATE lampu SET mode='$mode'");
+	}
+	function mode()
+	{
+		$mode = $this->koneksi->query("SELECT mode from lampu limit 1");
+		$mode = $mode->fetch_array();
+		return $mode['mode'];
+	}
+	function cekStatus($id_lampu)
+	{
+		$mode = $this->koneksi->query("SELECT status from lampu WHERE id_lampu = '$id_lampu'");
+		$mode = $mode->fetch_array();
+		return $mode['status'];
+	}
+
 	function riwayat()
 	{
-		return $this->koneksi->query("SELECT riwayat.*, `lampu`.lampu FROM lampu, riwayat WHERE `lampu`.id_lampu = `riwayat`.id_lampu");
+		return $this->koneksi->query("SELECT * FROM riwayat");
+	}
+
+	function view($status)
+	{
+		if($status == '0'){
+			echo '<span style="color: red;font-style: italic"><strong>OFF</strong></span>';
+		}
+		else{
+			echo '<span style="color: blue"><strong>ON</strong></span>';
+		}
+	}
+
+	function execute($query)
+	{
+		$this->koneksi->query($query);
 	}
 }
 

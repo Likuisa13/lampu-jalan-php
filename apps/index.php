@@ -183,6 +183,10 @@ $datauser = $user->detail($id_user);
         {
           include 'pengontrollampu/off.php';
         }
+        elseif ($_GET['halaman']=="status") 
+        {
+          include 'pengontrollampu/status.php';
+        }
         elseif ($_GET['halaman']=="instansi") 
         {
           include 'instansi/list.php';

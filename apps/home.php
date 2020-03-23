@@ -11,7 +11,7 @@ $datalampu = $lampu->tampil();
   <div class="container-fluid">
     <div class="row">
       <?php foreach ($datalampu as $key => $value): ?>
-       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <?php if ($value['status']==1): ?>
           <div class="single-skill widget-ov-mg-t-30 shadow-reset" style="background-color: #F7AE09; padding: 12px;">
             <?php else: ?>
